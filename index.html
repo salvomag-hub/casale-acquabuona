@@ -6,9 +6,86 @@
     <title>Casale dell'Acquabona | Agriturismo a Montefano, Marche</title>
     <meta name="description" content="Casale dell'Acquabona: agriturismo di charme nelle colline di Montefano (MC). Camere con travi a vista, cucina marchigiana, a 20 min dal mare e da Recanati.">
     <meta name="keywords" content="agriturismo marche, casale montefano, bed and breakfast macerata, vacanze marche, agriturismo conero, recanati, riviera del conero">
+    <!-- Open Graph -->
     <meta property="og:title" content="Casale dell'Acquabona - Agriturismo di Charme a Montefano">
     <meta property="og:description" content="Un'oasi di pace nelle colline marchigiane. Camere rustiche, cucina tipica, a due passi dal Conero e da Recanati.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://salvomag-hub.github.io/casale-acquabona/">
+    <meta property="og:image" content="https://salvomag-hub.github.io/casale-acquabona/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Casale dell'Acquabona">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Casale dell'Acquabona - Agriturismo di Charme a Montefano">
+    <meta name="twitter:description" content="Un'oasi di pace nelle colline marchigiane. Camere rustiche, cucina tipica, a due passi dal Conero e da Recanati.">
+    <meta name="twitter:image" content="https://salvomag-hub.github.io/casale-acquabona/og-image.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#2c4a3e">
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Casale dell'Acquabona",
+        "description": "Agriturismo di charme nelle colline di Montefano (MC). Camere con travi a vista, cucina marchigiana km0, a 20 min dal mare e da Recanati.",
+        "url": "https://salvomag-hub.github.io/casale-acquabona/",
+        "image": "https://salvomag-hub.github.io/casale-acquabona/og-image.jpg",
+        "telephone": "+393386575725",
+        "email": "info@ilcasaledellacquabona.it",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Contrada Intriglione, 6",
+            "addressLocality": "Montefano",
+            "addressRegion": "MC",
+            "postalCode": "62010",
+            "addressCountry": "IT"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 43.40138,
+            "longitude": 13.40432
+        },
+        "priceRange": "€€",
+        "starRating": {
+            "@type": "Rating",
+            "ratingValue": "4.8"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "127",
+            "bestRating": "5"
+        },
+        "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuito", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Colazione inclusa", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Animali ammessi", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Ristorante", "value": true}
+        ],
+        "checkinTime": "15:00",
+        "checkoutTime": "11:00",
+        "availableLanguage": ["it", "en", "de"],
+        "numberOfRooms": 5,
+        "petsAllowed": true,
+        "sameAs": [
+            "https://www.ilcasaledellacquabona.it"
+        ]
+    }
+    </script>
+    <!-- Google Analytics 4 — Sostituire G-XXXXXXXXXX con il tuo Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -171,7 +248,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('casale-esterno.jpg') center/cover no-repeat;
+            background: url('casale-esterno.webp') center/cover no-repeat;
         }
 
         .hero-overlay {
@@ -402,6 +479,7 @@
             cursor: pointer;
         }
 
+        .room-card picture,
         .room-card img {
             width: 100%;
             height: 100%;
@@ -479,6 +557,7 @@
             overflow: hidden;
         }
 
+        .panorama picture,
         .panorama img {
             width: 100%;
             height: 100%;
@@ -542,6 +621,7 @@
             aspect-ratio: auto;
         }
 
+        .gallery-item picture,
         .gallery-item img {
             width: 100%;
             height: 100%;
@@ -790,6 +870,7 @@
             overflow: hidden;
         }
 
+        .chi-siamo-img picture,
         .chi-siamo-img img {
             width: 100%;
             height: 100%;
@@ -1260,6 +1341,168 @@
         .fade-in.visible {
             opacity: 1;
         }
+
+        /* ========== STICKY BOOKING BAR ========== */
+        .booking-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44, 74, 62, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 950;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            box-shadow: 0 -2px 20px rgba(0,0,0,0.15);
+        }
+
+        .booking-bar.visible {
+            transform: translateY(0);
+        }
+
+        .booking-bar-text {
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        .booking-bar-text strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .booking-bar-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.8rem;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 3px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .booking-bar-cta:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .booking-bar {
+                padding: 0.7rem 4%;
+                gap: 0.8rem;
+            }
+            .booking-bar-text {
+                font-size: 0.75rem;
+                display: none;
+            }
+            .booking-bar-cta {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 1.5rem;
+            }
+            .whatsapp-float {
+                bottom: 5rem;
+            }
+        }
+
+        /* ========== COOKIE BANNER ========== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            color: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            z-index: 2000;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+
+        .cookie-banner.visible {
+            transform: translateY(0);
+        }
+
+        .cookie-banner p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            font-weight: 300;
+            flex: 1;
+        }
+
+        .cookie-banner a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .cookie-btn-accept {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .cookie-btn-accept:hover {
+            background: var(--white);
+        }
+
+        .cookie-btn-reject {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem 5%;
+            }
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1304,7 +1547,10 @@
             <div class="hero-subtitle">Agriturismo di Charme &mdash; Montefano</div>
             <h1 class="hero-title">Casale<br>dell'Acquabona</h1>
             <p class="hero-desc">Un'oasi di pace immersa nelle colline marchigiane, tra il profumo della campagna e la brezza del mare Adriatico.</p>
-            <a href="#camere" class="hero-cta">Scopri le Camere</a>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+                <a href="#contatti" class="hero-cta" style="background:var(--accent);color:var(--dark);border-color:var(--accent);font-weight:600;margin-top:0;">&#9742; Prenota Ora</a>
+                <a href="#camere" class="hero-cta" style="margin-top:0;">Scopri le Camere</a>
+            </div>
         </div>
         <div class="scroll-indicator">
             <span>Scorri</span>
@@ -1350,7 +1596,10 @@
         </div>
         <div class="rooms-grid">
             <div class="room-card" onclick="openModal('Camera Matrimoniale', 90)">
-                <img src="camera-matrimoniale.jpeg" alt="Camera Matrimoniale - Casale dell'Acquabona" loading="lazy">
+                <picture>
+                    <source srcset="camera-matrimoniale.webp" type="image/webp">
+                    <img src="camera-matrimoniale.jpeg" alt="Camera Matrimoniale - Casale dell'Acquabona" loading="lazy">
+                </picture>
                 <div class="room-overlay">
                     <h3 class="room-name">Camera Matrimoniale</h3>
                     <div class="room-features">
@@ -1362,7 +1611,10 @@
                 </div>
             </div>
             <div class="room-card" onclick="openModal('Camera Superior', 110)">
-                <img src="camera-superior.jpeg" alt="Camera Superior con lucernario - Casale dell'Acquabona" loading="lazy">
+                <picture>
+                    <source srcset="camera-superior.webp" type="image/webp">
+                    <img src="camera-superior.jpeg" alt="Camera Superior con lucernario - Casale dell'Acquabona" loading="lazy">
+                </picture>
                 <div class="room-overlay">
                     <h3 class="room-name">Camera Superior</h3>
                     <div class="room-features">
@@ -1374,7 +1626,10 @@
                 </div>
             </div>
             <div class="room-card" onclick="openModal('Camera Familiare', 130)">
-                <img src="camera-familiare.jpeg" alt="Camera Familiare spaziosa - Casale dell'Acquabona" loading="lazy">
+                <picture>
+                    <source srcset="camera-familiare.webp" type="image/webp">
+                    <img src="camera-familiare.jpeg" alt="Camera Familiare spaziosa - Casale dell'Acquabona" loading="lazy">
+                </picture>
                 <div class="room-overlay">
                     <h3 class="room-name">Camera Familiare</h3>
                     <div class="room-features">
@@ -1390,7 +1645,10 @@
 
     <!-- Panorama -->
     <div class="panorama">
-        <img src="vista-colline.jpg" alt="Panorama delle colline marchigiane dal Casale dell'Acquabona" loading="lazy">
+        <picture>
+            <source srcset="vista-colline.webp" type="image/webp">
+            <img src="vista-colline.jpg" alt="Panorama delle colline marchigiane dal Casale dell'Acquabona" loading="lazy">
+        </picture>
         <div class="panorama-overlay">
             <div class="panorama-text fade-up">
                 <h2>Il panorama che vi aspetta</h2>
@@ -1407,23 +1665,38 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="casale-esterno.jpg" alt="Facciata del Casale dell'Acquabona al tramonto" loading="lazy">
+                <picture>
+                    <source srcset="casale-esterno.webp" type="image/webp">
+                    <img src="casale-esterno.jpg" alt="Facciata del Casale dell'Acquabona al tramonto" loading="lazy">
+                </picture>
                 <span class="gallery-label">Il Casale al Tramonto</span>
             </div>
             <div class="gallery-item">
-                <img src="vista-colline.jpg" alt="Panorama colline marchigiane" loading="lazy">
+                <picture>
+                    <source srcset="vista-colline.webp" type="image/webp">
+                    <img src="vista-colline.jpg" alt="Panorama colline marchigiane" loading="lazy">
+                </picture>
                 <span class="gallery-label">Il Panorama</span>
             </div>
             <div class="gallery-item">
-                <img src="interni-scala.jpeg" alt="Scala interna in legno" loading="lazy">
+                <picture>
+                    <source srcset="interni-scala.webp" type="image/webp">
+                    <img src="interni-scala.jpeg" alt="Scala interna in legno" loading="lazy">
+                </picture>
                 <span class="gallery-label">Gli Interni</span>
             </div>
             <div class="gallery-item">
-                <img src="camera-matrimoniale.jpeg" alt="Camera matrimoniale" loading="lazy">
+                <picture>
+                    <source srcset="camera-matrimoniale.webp" type="image/webp">
+                    <img src="camera-matrimoniale.jpeg" alt="Camera matrimoniale" loading="lazy">
+                </picture>
                 <span class="gallery-label">Le Camere</span>
             </div>
             <div class="gallery-item">
-                <img src="bagno.jpeg" alt="Bagno con doccia e finiture in legno" loading="lazy">
+                <picture>
+                    <source srcset="bagno.webp" type="image/webp">
+                    <img src="bagno.jpeg" alt="Bagno con doccia e finiture in legno" loading="lazy">
+                </picture>
                 <span class="gallery-label">I Bagni</span>
             </div>
         </div>
@@ -1556,7 +1829,10 @@
         </div>
         <div class="chi-siamo-layout">
             <div class="chi-siamo-img fade-up">
-                <img src="interni-scala.jpeg" alt="Interni del Casale dell'Acquabona" loading="lazy">
+                <picture>
+                    <source srcset="interni-scala.webp" type="image/webp">
+                    <img src="interni-scala.jpeg" alt="Interni del Casale dell'Acquabona" loading="lazy">
+                </picture>
             </div>
             <div class="chi-siamo-text fade-up">
                 <p>
@@ -1704,6 +1980,28 @@
         </svg>
     </a>
 
+    <!-- Sticky Booking Bar -->
+    <div class="booking-bar" id="bookingBar">
+        <span class="booking-bar-text">
+            <strong>Casale dell'Acquabona</strong> &mdash; Prenota direttamente e risparmia sulle commissioni OTA
+        </span>
+        <button class="booking-bar-cta" onclick="openModal('Richiesta Prenotazione', 0)">
+            &#9742; Prenota Diretto
+        </button>
+    </div>
+
+    <!-- Cookie Banner GDPR -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>
+            Utilizziamo i cookie per migliorare la tua esperienza di navigazione e analizzare il traffico del sito.
+            Continuando, accetti la nostra <a href="#" onclick="return false;">cookie policy</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accetta</button>
+            <button class="cookie-btn cookie-btn-reject" onclick="rejectCookies()">Rifiuta</button>
+        </div>
+    </div>
+
     <script>
         // ===== Hamburger Menu =====
         const hamburger = document.getElementById('hamburger');
@@ -1829,6 +2127,82 @@
         // Close modal on Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') { closeModal(); }
+        });
+
+        // ===== Sticky Booking Bar =====
+        var bookingBar = document.getElementById('bookingBar');
+        var heroSection = document.querySelector('.hero');
+
+        var barObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    bookingBar.classList.remove('visible');
+                } else {
+                    bookingBar.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        barObserver.observe(heroSection);
+
+        // ===== Cookie Banner GDPR =====
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            hideCookieBanner();
+            // Enable GA4 if consent given
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            hideCookieBanner();
+            // Disable GA4
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied'
+                });
+            }
+        }
+
+        function hideCookieBanner() {
+            var banner = document.getElementById('cookieBanner');
+            banner.classList.remove('visible');
+        }
+
+        // Show cookie banner if no consent stored
+        (function() {
+            var consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                setTimeout(function() {
+                    document.getElementById('cookieBanner').classList.add('visible');
+                }, 1500);
+            }
+        })();
+
+        // ===== GA4 Event Tracking =====
+        // Track key conversion events
+        document.querySelectorAll('.hero-cta, .booking-bar-cta, .cta-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'begin_checkout', {
+                        'event_category': 'booking',
+                        'event_label': this.textContent.trim()
+                    });
+                }
+            });
+        });
+
+        document.querySelector('.whatsapp-float').addEventListener('click', function() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'contact', {
+                    'event_category': 'whatsapp',
+                    'event_label': 'whatsapp_click'
+                });
+            }
         });
     </script>
 
