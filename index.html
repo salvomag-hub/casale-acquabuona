@@ -947,6 +947,74 @@
             margin-top: 0.3rem;
         }
 
+        .review-date {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.25);
+            margin-top: 0.2rem;
+        }
+
+        /* Aggregate rating */
+        .reviews-aggregate {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .aggregate-stars { color: var(--accent); font-size: 1.1rem; letter-spacing: 0.1rem; }
+        .aggregate-score { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.3rem; color: var(--white); }
+        .aggregate-count { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+        .aggregate-source { font-size: 0.7rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1rem; }
+
+        /* Reviews carousel nav */
+        .reviews-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+        .reviews-nav-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .reviews-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .reviews-dots { display: flex; gap: 0.5rem; }
+        .reviews-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0;
+        }
+        .reviews-dot.active { background: var(--accent); transform: scale(1.3); }
+
+        /* Reviews links */
+        .reviews-links { text-align: center; margin-top: 2.5rem; }
+        .reviews-platform-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.08rem;
+            transition: opacity 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .reviews-platform-link:hover { opacity: 0.7; }
+
         /* ========== CONTATTI / INFO ========== */
         .info {
             background: var(--primary);
@@ -2205,27 +2273,26 @@
         <div class="section-header">
             <div class="section-label fade-up" data-i18n="recensioni.label">Dicono di Noi</div>
             <h2 class="section-title fade-up" data-i18n="recensioni.title">Le Voci dei Nostri Ospiti</h2>
-            <p class="section-subtitle fade-up" data-i18n="recensioni.subtitle">Oltre 100 recensioni positive su Booking, TripAdvisor e Google</p>
+            <div class="reviews-aggregate fade-up" id="reviewsAggregate" style="display:none">
+                <div class="aggregate-stars" id="aggregateStars"></div>
+                <span class="aggregate-score" id="aggregateScore"></span>
+                <span class="aggregate-count" id="aggregateCount"></span>
+                <span class="aggregate-source">Google Reviews</span>
+            </div>
+            <p class="section-subtitle fade-up" id="reviewsSubtitle" data-i18n="recensioni.subtitle">Oltre 100 recensioni positive su Booking, TripAdvisor e Google</p>
         </div>
-        <div class="recensioni-grid">
-            <div class="review-card fade-up">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-text" data-i18n="recensioni.r1_text">&laquo;Posto incantevole, camere pulite e curate. Il cibo &egrave; eccezionale, porzioni generose e tutto genuino. Marco e Celina sono ospiti fantastici.&raquo;</p>
-                <div class="review-author">Famiglia R.</div>
-                <div class="review-source">Booking.com</div>
-            </div>
-            <div class="review-card fade-up">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-text" data-i18n="recensioni.r2_text">&laquo;Agriturismo bellissimo, panorama mozzafiato sulle colline. Il cuoco &egrave; bravissimo, la cucina tradizionale marchigiana al suo meglio. Torneremo sicuramente!&raquo;</p>
-                <div class="review-author">Laura M.</div>
-                <div class="review-source">TripAdvisor</div>
-            </div>
-            <div class="review-card fade-up">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-text" data-i18n="recensioni.r3_text">&laquo;Tranquillit&agrave; assoluta, accoglienza calorosa e un rapporto qualit&agrave;-prezzo eccellente. I cani del casale sono adorabili. Perfetto per staccare dalla routine.&raquo;</p>
-                <div class="review-author">Andreas K.</div>
-                <div class="review-source">Google Reviews</div>
-            </div>
+        <div class="recensioni-grid" id="recensioniGrid">
+            <!-- Populated dynamically by JS (static fallback or Featurable API) -->
+        </div>
+        <div class="reviews-nav" id="reviewsNav" style="display:none">
+            <button class="reviews-nav-btn" id="reviewsPrev" aria-label="Precedente">&#8249;</button>
+            <div class="reviews-dots" id="reviewsDots"></div>
+            <button class="reviews-nav-btn" id="reviewsNext" aria-label="Successiva">&#8250;</button>
+        </div>
+        <div class="reviews-links fade-up" id="reviewsLinks" style="display:none">
+            <a href="#" id="googleReviewsLink" target="_blank" rel="noopener noreferrer" class="reviews-platform-link">
+                &#9733; <span data-i18n="recensioni.read_all_google">Leggi tutte le recensioni su Google</span>
+            </a>
         </div>
     </section>
 
@@ -2651,6 +2718,264 @@
             });
         })();
 
+        // ===== DYNAMIC GOOGLE REVIEWS (Featurable API) =====
+        // ====================================================================
+        // ISTRUZIONI PER ATTIVARE LE RECENSIONI DINAMICHE DA GOOGLE:
+        // 1. Vai su https://featurable.com e crea un account gratuito
+        // 2. Clicca "Sign in with Google" e collega il tuo Google Business
+        // 3. Seleziona "Il Casale dell'Acquabona" dalla lista
+        // 4. Clicca "Embed" > "API" > copia il widget ID
+        // 5. Incolla il widget ID qui sotto al posto di ''
+        // ====================================================================
+        var FEATURABLE_WIDGET_ID = '';
+
+        var reviewsCurrentPage = 0;
+        var reviewsPerPage = 3;
+        var allReviews = [];
+        var reviewsAutoInterval = null;
+
+        // Static fallback reviews (currently shown, with i18n support)
+        var staticReviewsData = [
+            {
+                starRating: 5,
+                comment: '\u00abPosto incantevole, camere pulite e curate. Il cibo \u00e8 eccezionale, porzioni generose e tutto genuino. Marco e Celina sono ospiti fantastici.\u00bb',
+                displayName: 'Famiglia R.',
+                source: 'Booking.com',
+                i18nKey: 'recensioni.r1_text'
+            },
+            {
+                starRating: 5,
+                comment: '\u00abAgriturismo bellissimo, panorama mozzafiato sulle colline. Il cuoco \u00e8 bravissimo, la cucina tradizionale marchigiana al suo meglio. Torneremo sicuramente!\u00bb',
+                displayName: 'Laura M.',
+                source: 'TripAdvisor',
+                i18nKey: 'recensioni.r2_text'
+            },
+            {
+                starRating: 5,
+                comment: '\u00abTranquillit\u00e0 assoluta, accoglienza calorosa e un rapporto qualit\u00e0-prezzo eccellente. I cani del casale sono adorabili. Perfetto per staccare dalla routine.\u00bb',
+                displayName: 'Andreas K.',
+                source: 'Google Reviews',
+                i18nKey: 'recensioni.r3_text'
+            }
+        ];
+
+        function generateStars(rating) {
+            var full = Math.floor(rating);
+            var half = rating % 1 >= 0.3;
+            var stars = '';
+            for (var i = 0; i < full; i++) { stars += '\u2605'; }
+            if (half) { stars += '\u2606'; }
+            return stars;
+        }
+
+        function getRelativeDate(dateStr) {
+            if (!dateStr) { return ''; }
+            var now = new Date();
+            var date = new Date(dateStr);
+            var diff = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+            if (diff < 1) { return currentLang === 'de' ? 'Heute' : currentLang === 'en' ? 'Today' : 'Oggi'; }
+            if (diff < 7) { return currentLang === 'de' ? 'Vor ' + diff + ' Tagen' : currentLang === 'en' ? diff + ' days ago' : diff + ' giorni fa'; }
+            if (diff < 30) {
+                var weeks = Math.floor(diff / 7);
+                return currentLang === 'de' ? 'Vor ' + weeks + ' Woche' + (weeks > 1 ? 'n' : '') : currentLang === 'en' ? weeks + ' week' + (weeks > 1 ? 's' : '') + ' ago' : weeks + ' settiman' + (weeks > 1 ? 'e' : 'a') + ' fa';
+            }
+            if (diff < 365) {
+                var months = Math.floor(diff / 30);
+                return currentLang === 'de' ? 'Vor ' + months + ' Monat' + (months > 1 ? 'en' : '') : currentLang === 'en' ? months + ' month' + (months > 1 ? 's' : '') + ' ago' : months + ' mes' + (months > 1 ? 'i' : 'e') + ' fa';
+            }
+            var years = Math.floor(diff / 365);
+            return currentLang === 'de' ? 'Vor ' + years + ' Jahr' + (years > 1 ? 'en' : '') : currentLang === 'en' ? years + ' year' + (years > 1 ? 's' : '') + ' ago' : years + ' ann' + (years > 1 ? 'i' : 'o') + ' fa';
+        }
+
+        function createReviewCard(review, isStatic) {
+            var card = document.createElement('div');
+            card.className = 'review-card fade-up visible';
+
+            var starsDiv = document.createElement('div');
+            starsDiv.className = 'review-stars';
+            starsDiv.textContent = generateStars(review.starRating || 5);
+
+            var textP = document.createElement('p');
+            textP.className = 'review-text';
+            if (isStatic && review.i18nKey) {
+                textP.setAttribute('data-i18n', review.i18nKey);
+                // Use raw Italian text; setLanguage() will translate via data-i18n later
+                textP.textContent = review.comment;
+            } else {
+                var comment = review.comment || '';
+                if (comment.length > 250) { comment = comment.substring(0, 247) + '...'; }
+                textP.textContent = '\u00ab' + comment + '\u00bb';
+            }
+
+            var authorDiv = document.createElement('div');
+            authorDiv.className = 'review-author';
+            authorDiv.textContent = review.displayName || (review.reviewer ? review.reviewer.displayName : '');
+
+            var sourceDiv = document.createElement('div');
+            sourceDiv.className = 'review-source';
+            sourceDiv.textContent = review.source || 'Google Reviews';
+
+            card.appendChild(starsDiv);
+            card.appendChild(textP);
+            card.appendChild(authorDiv);
+            card.appendChild(sourceDiv);
+
+            if (!isStatic && review.createTime) {
+                var dateDiv = document.createElement('div');
+                dateDiv.className = 'review-date';
+                dateDiv.textContent = getRelativeDate(review.createTime);
+                card.appendChild(dateDiv);
+            }
+
+            return card;
+        }
+
+        function renderReviewsPage() {
+            var grid = document.getElementById('recensioniGrid');
+            grid.innerHTML = '';
+            var start = reviewsCurrentPage * reviewsPerPage;
+            var end = Math.min(start + reviewsPerPage, allReviews.length);
+            for (var i = start; i < end; i++) {
+                grid.appendChild(allReviews[i].element);
+            }
+            // Update dots
+            var dots = document.querySelectorAll('.reviews-dot');
+            dots.forEach(function(dot, idx) {
+                dot.classList.toggle('active', idx === reviewsCurrentPage);
+            });
+        }
+
+        function setupCarousel(totalPages) {
+            if (totalPages <= 1) { return; }
+            var nav = document.getElementById('reviewsNav');
+            nav.style.display = 'flex';
+
+            var dotsContainer = document.getElementById('reviewsDots');
+            dotsContainer.innerHTML = '';
+            for (var i = 0; i < totalPages; i++) {
+                var dot = document.createElement('button');
+                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Pagina ' + (i + 1));
+                (function(page) {
+                    dot.addEventListener('click', function() {
+                        reviewsCurrentPage = page;
+                        renderReviewsPage();
+                        resetAutoAdvance();
+                    });
+                })(i);
+                dotsContainer.appendChild(dot);
+            }
+
+            document.getElementById('reviewsPrev').addEventListener('click', function() {
+                var totalP = Math.ceil(allReviews.length / reviewsPerPage);
+                reviewsCurrentPage = (reviewsCurrentPage - 1 + totalP) % totalP;
+                renderReviewsPage();
+                resetAutoAdvance();
+            });
+            document.getElementById('reviewsNext').addEventListener('click', function() {
+                var totalP = Math.ceil(allReviews.length / reviewsPerPage);
+                reviewsCurrentPage = (reviewsCurrentPage + 1) % totalP;
+                renderReviewsPage();
+                resetAutoAdvance();
+            });
+
+            // Auto-advance every 6s
+            startAutoAdvance();
+        }
+
+        function startAutoAdvance() {
+            reviewsAutoInterval = setInterval(function() {
+                var totalP = Math.ceil(allReviews.length / reviewsPerPage);
+                reviewsCurrentPage = (reviewsCurrentPage + 1) % totalP;
+                renderReviewsPage();
+            }, 6000);
+        }
+
+        function resetAutoAdvance() {
+            clearInterval(reviewsAutoInterval);
+            startAutoAdvance();
+        }
+
+        function renderStaticReviews() {
+            allReviews = staticReviewsData.map(function(r) {
+                return { element: createReviewCard(r, true), data: r };
+            });
+            renderReviewsPage();
+        }
+
+        function renderDynamicReviews(data) {
+            // Show aggregate rating
+            var aggEl = document.getElementById('reviewsAggregate');
+            aggEl.style.display = 'flex';
+            document.getElementById('aggregateStars').textContent = generateStars(data.averageRating);
+            document.getElementById('aggregateScore').textContent = data.averageRating.toFixed(1);
+            var countLabel = currentLang === 'de' ? data.totalReviewCount + ' Bewertungen' : currentLang === 'en' ? data.totalReviewCount + ' reviews' : data.totalReviewCount + ' recensioni';
+            document.getElementById('aggregateCount').textContent = '(' + countLabel + ')';
+
+            // Hide static subtitle
+            var subtitle = document.getElementById('reviewsSubtitle');
+            if (subtitle) { subtitle.style.display = 'none'; }
+
+            // Filter reviews with text, sort by rating then date
+            var reviews = data.reviews
+                .filter(function(r) { return r.comment && r.comment.trim().length > 10; })
+                .sort(function(a, b) {
+                    if (b.starRating !== a.starRating) { return b.starRating - a.starRating; }
+                    return new Date(b.createTime || 0) - new Date(a.createTime || 0);
+                });
+
+            if (reviews.length === 0) {
+                renderStaticReviews();
+                return;
+            }
+
+            // Build review card elements
+            allReviews = reviews.map(function(r) {
+                var reviewData = {
+                    starRating: r.starRating,
+                    comment: r.comment,
+                    displayName: r.reviewer ? r.reviewer.displayName : '',
+                    source: 'Google Reviews',
+                    createTime: r.createTime
+                };
+                return { element: createReviewCard(reviewData, false), data: reviewData };
+            });
+
+            // Render first page
+            renderReviewsPage();
+
+            // Setup carousel if more than 3 reviews
+            var totalPages = Math.ceil(allReviews.length / reviewsPerPage);
+            setupCarousel(totalPages);
+
+            // Show "Read all on Google" link
+            if (data.profileUrl) {
+                var linksEl = document.getElementById('reviewsLinks');
+                linksEl.style.display = 'block';
+                document.getElementById('googleReviewsLink').href = data.profileUrl;
+            }
+        }
+
+        function initReviews() {
+            if (!FEATURABLE_WIDGET_ID) {
+                renderStaticReviews();
+                return;
+            }
+
+            fetch('https://featurable.com/api/v1/widgets/' + FEATURABLE_WIDGET_ID)
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (!data.success || !data.reviews || !data.reviews.length) {
+                        renderStaticReviews();
+                        return;
+                    }
+                    renderDynamicReviews(data);
+                })
+                .catch(function() {
+                    renderStaticReviews();
+                });
+        }
+
         // ===== MULTI-LANGUAGE SYSTEM (IT/EN/DE) =====
         var currentLang = 'it';
 
@@ -2802,7 +3127,8 @@
                     subtitle: 'Oltre 100 recensioni positive su Booking, TripAdvisor e Google',
                     r1_text: '\u00abPosto incantevole, camere pulite e curate. Il cibo \u00e8 eccezionale, porzioni generose e tutto genuino. Marco e Celina sono ospiti fantastici.\u00bb',
                     r2_text: '\u00abAgriturismo bellissimo, panorama mozzafiato sulle colline. Il cuoco \u00e8 bravissimo, la cucina tradizionale marchigiana al suo meglio. Torneremo sicuramente!\u00bb',
-                    r3_text: '\u00abTranquillit\u00e0 assoluta, accoglienza calorosa e un rapporto qualit\u00e0-prezzo eccellente. I cani del casale sono adorabili. Perfetto per staccare dalla routine.\u00bb'
+                    r3_text: '\u00abTranquillit\u00e0 assoluta, accoglienza calorosa e un rapporto qualit\u00e0-prezzo eccellente. I cani del casale sono adorabili. Perfetto per staccare dalla routine.\u00bb',
+                    read_all_google: 'Leggi tutte le recensioni su Google'
                 },
                 // Contatti
                 contatti: {
@@ -2997,7 +3323,8 @@
                     subtitle: 'Over 100 positive reviews on Booking, TripAdvisor and Google',
                     r1_text: '\u00abEnchanting place, clean and well-kept rooms. The food is exceptional, generous portions and everything is genuine. Marco and Celina are wonderful hosts.\u00bb',
                     r2_text: '\u00abBeautiful agriturismo, breathtaking views over the hills. The chef is outstanding, traditional Marche cuisine at its finest. We\u2019ll definitely be back!\u00bb',
-                    r3_text: '\u00abAbsolute tranquillity, warm welcome and excellent value for money. The farmhouse dogs are adorable. Perfect for getting away from it all.\u00bb'
+                    r3_text: '\u00abAbsolute tranquillity, warm welcome and excellent value for money. The farmhouse dogs are adorable. Perfect for getting away from it all.\u00bb',
+                    read_all_google: 'Read all reviews on Google'
                 },
                 contatti: {
                     title: 'Come Visit Us',
@@ -3185,7 +3512,8 @@
                     subtitle: '\u00dcber 100 positive Bewertungen auf Booking, TripAdvisor und Google',
                     r1_text: '\u00abBezaubernder Ort, saubere und gepflegte Zimmer. Das Essen ist au\u00dfergew\u00f6hnlich, gro\u00dfz\u00fcgige Portionen und alles echt. Marco und Celina sind fantastische Gastgeber.\u00bb',
                     r2_text: '\u00abWundersch\u00f6ner Agriturismo, atemberaubender Blick \u00fcber die H\u00fcgel. Der Koch ist hervorragend, die traditionelle K\u00fcche der Marken in ihrer besten Form. Wir kommen bestimmt wieder!\u00bb',
-                    r3_text: '\u00abAbsolute Ruhe, herzlicher Empfang und ein hervorragendes Preis-Leistungs-Verh\u00e4ltnis. Die Hunde des Casale sind bezaubernd. Perfekt, um vom Alltag abzuschalten.\u00bb'
+                    r3_text: '\u00abAbsolute Ruhe, herzlicher Empfang und ein hervorragendes Preis-Leistungs-Verh\u00e4ltnis. Die Hunde des Casale sind bezaubernd. Perfekt, um vom Alltag abzuschalten.\u00bb',
+                    read_all_google: 'Alle Bewertungen auf Google lesen'
                 },
                 contatti: {
                     title: 'Besuchen Sie Uns',
@@ -3326,6 +3654,13 @@
             }
             // default: Italian (already in HTML)
         })();
+
+        // Initialize reviews after translations are loaded
+        initReviews();
+        // Re-apply translations to dynamically created review cards
+        if (currentLang && currentLang !== 'it') {
+            setLanguage(currentLang);
+        }
     </script>
 
 </body>
