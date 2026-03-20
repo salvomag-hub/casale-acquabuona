@@ -969,7 +969,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             max-width: 1200px;
-            align-items: start;
+            align-items: stretch;
         }
 
         .contatti-info {
@@ -977,6 +977,12 @@
             padding: 50px 40px;
             border-radius: 8px;
             box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contatti-info .btn {
+            margin-top: auto;
         }
 
         .contatti-info h2 {
